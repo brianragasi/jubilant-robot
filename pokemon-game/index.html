@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon QR Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqcjkawfK207bEypSM9ENM91mNeZFYlXAzXw&s');
+            background-repeat: repeat;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            z-index: -1;
+        }
+        .pokemon-font {
+            font-family: 'Arial', sans-serif;
+            color: #FFCB05;
+            text-shadow: 2px 2px #3D7DCA;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+        }
+        .btn-primary {
+            background-color: #3D7DCA;
+            border-color: #3D7DCA;
+        }
+        .btn-primary:hover {
+            background-color: #2A55A3;
+            border-color: #2A55A3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center">
+        <div class="card p-4 shadow-lg">
+            <div class="card-body text-center">
+                <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" alt="Pokémon Logo" class="mb-4">
+                <h1 class="mb-4 pokemon-font">Welcome to the Pokémon QR Game!</h1>
+                <p class="mb-4">Enter your name and start the game:</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="playerName" class="form-control" placeholder="Enter your name" aria-label="Player name">
+                    <button class="btn btn-primary" type="button" id="startGame">Start Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('startGame').addEventListener('click', () => {
+            const playerName = document.getElementById('playerName').value;
+            if (playerName) {
+                localStorage.setItem('playerName', playerName);
+                window.location.href = 'scanner.html';
+            } else {
+                alert('Please enter your name.');
+            }
+        });
+    </script>
+</body>
+</html>
+
