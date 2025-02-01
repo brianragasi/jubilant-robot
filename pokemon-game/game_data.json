@@ -1,0 +1,24 @@
+{
+  "pokemons": [
+    {
+      "name": "bulbasaur",
+      "image": "images/bulbasaur.png"
+    },
+    {
+      "name": "charmander",
+      "image": "images/charmander.jpg"
+    },
+    {
+      "name": "Ivysaur",
+      "image": "images/Ivysaur.jpg"
+    },
+    {
+      "name": "squirtle",
+      "image": "images/squirtle.png"
+    },
+    {
+      "name": "venusaur",
+      "image": "images/venusaur.jpg"
+    }
+  ]
+}

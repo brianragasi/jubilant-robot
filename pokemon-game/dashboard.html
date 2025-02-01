@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon QR Game Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqcjkawfK207bEypSM9ENM91mNeZFYlXAzXw&s');
+            background-repeat: repeat;
+            position: relative;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            z-index: -1;
+        }
+        .pokemon-font {
+            font-family: 'Arial', sans-serif;
+            color: #FFCB05;
+            text-shadow: 2px 2px #3D7DCA;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 15px;
+        }
+        .btn-primary {
+            background-color: #3D7DCA;
+            border-color: #3D7DCA;
+        }
+        .btn-primary:hover {
+            background-color: #2A55A3;
+            border-color: #2A55A3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container min-vh-100 d-flex flex-column justify-content-center align-items-center py-5">
+        <div class="card p-4 shadow-lg">
+            <div class="card-body text-center">
+                <img src="https://assets.pokemon.com/assets/cms2/img/misc/gus/buttons/logo-pokemon-79x45.png" alt="Pokémon Logo" class="mb-4">
+                <h1 id="gameResultHeading" class="mb-4 pokemon-font">Game Over!</h1>
+                <div id="results">
+                    <p class="mb-2">Player: <span id="playerName" class="fw-bold"></span></p>
+                    <p class="mb-2">Correct Guesses: <span id="correctGuesses" class="badge bg-success"></span></p>
+                    <p class="mb-2">Incorrect Guesses: <span id="incorrectGuesses" class="badge bg-danger"></span></p>
+                    <p class="mb-2">Fastest Correct Time: <span id="fastestCorrectTime" class="badge bg-info"></span></p>
+                    <p class="mb-2">Fastest Incorrect Time: <span id="fastestIncorrectTime" class="badge bg-warning text-dark"></span></p>
+                    <p id="message" class="mt-3 fw-bold"></p>
+                </div>
+                <button id="playAgain" class="btn btn-primary mt-4">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const playerName = localStorage.getItem('playerName');
+        const correctGuesses = localStorage.getItem('correctGuesses');
+        const incorrectGuesses = localStorage.getItem('incorrectGuesses');
+        const fastestCorrectTime = localStorage.getItem('fastestCorrectTime');
+        const fastestIncorrectTime = localStorage.getItem('fastestIncorrectTime');
+
+        document.getElementById('playerName').textContent = playerName;
+        document.getElementById('correctGuesses').textContent = correctGuesses;
+        document.getElementById('incorrectGuesses').textContent = incorrectGuesses;
+        document.getElementById('fastestCorrectTime').textContent = fastestCorrectTime;
+        document.getElementById('fastestIncorrectTime').textContent = fastestIncorrectTime;
+
+        const message = document.getElementById('message');
+        const gameResultHeading = document.getElementById('gameResultHeading');
+        if (parseInt(correctGuesses) === 5) {
+            message.textContent = 'Congratulations! You got all the Pokémon correct!';
+            message.classList.add('text-success');
+            gameResultHeading.textContent = 'Congratulations!';
+        } else {
+            message.textContent = 'Better luck next time!';
+            message.classList.add('text-primary');
+        }
+
+        document.getElementById('playAgain').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
